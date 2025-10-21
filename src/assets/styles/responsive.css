@@ -1,0 +1,250 @@
+/* 響應式樣式 */
+
+/* 平板設備 (max-width: 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+
+  .subtitle {
+    font-size: 1rem;
+  }
+
+  .start-form {
+    padding: 1.5rem;
+  }
+
+  .question-card {
+    padding: 1.5rem;
+  }
+
+  .question-text {
+    font-size: 1.2rem;
+  }
+
+  .option-btn {
+    padding: 1rem;
+  }
+
+  .features {
+    grid-template-columns: 1fr;
+  }
+
+  .action-buttons {
+    flex-direction: column;
+  }
+
+  .action-buttons button,
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+  }
+
+  .compatibility-section {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .result-card {
+    margin-bottom: var(--spacing-lg);
+  }
+
+  .personality-type {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .type-icon {
+    font-size: 2.5rem;
+  }
+}
+
+/* 移動設備 (max-width: 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding: var(--spacing-md);
+  }
+  
+  .heart-icon {
+    font-size: 3rem;
+  }
+  
+  .title {
+    font-size: 1.8rem;
+  }
+  
+  .personality-type {
+    flex-direction: column;
+    text-align: center;
+  }
+  
+  .type-icon {
+    font-size: 2.5rem;
+  }
+  
+  .option-btn {
+    flex-direction: column;
+    text-align: center;
+    gap: var(--spacing-sm);
+  }
+  
+  .action-buttons {
+    flex-direction: column;
+  }
+  
+  .action-buttons .btn,
+  .primary-btn,
+  .secondary-btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .features {
+    grid-template-columns: 1fr;
+  }
+  
+  .feature-cards {
+    grid-template-columns: 1fr;
+  }
+  
+  .early-access-form {
+    flex-direction: column;
+  }
+  
+  .roadmap-timeline {
+    gap: var(--spacing-md);
+  }
+  
+  .timeline-item {
+    gap: var(--spacing-sm);
+  }
+
+  .back-button-container {
+    top: 1rem;
+    left: 1rem;
+  }
+
+  .back-btn {
+    width: 40px;
+    height: 40px;
+    padding: 0.5rem;
+  }
+}
+
+/* 大屏幕設備 (min-width: 1200px) */
+@media (min-width: 1200px) {
+  .container {
+    max-width: 1000px;
+  }
+  
+  .features {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  .feature-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .compatibility-section {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+  }
+  
+  .compatibility-section h3 {
+    grid-column: span 3;
+  }
+  
+  .question-card {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+}
+
+/* 超大屏幕 (min-width: 1600px) */
+@media (min-width: 1600px) {
+  .container {
+    max-width: 1200px;
+  }
+  
+  .heart-icon {
+    font-size: 5rem;
+  }
+  
+  .title {
+    font-size: 3.5rem;
+  }
+  
+  .subtitle {
+    font-size: 1.4rem;
+  }
+}
+
+/* 打印樣式 */
+@media print {
+  .bg-decoration,
+  .action-buttons,
+  .back-button-container {
+    display: none;
+  }
+  
+  .app {
+    background: white;
+    color: black;
+  }
+  
+  .card,
+  .compatibility-card {
+    background: white;
+    border: 1px solid #ccc;
+    box-shadow: none;
+  }
+}
+
+/* 高對比度模式 */
+@media (prefers-contrast: high) {
+  :root {
+    --primary-gradient: linear-gradient(135deg, #000080 0%, #000040 100%);
+    --secondary-gradient: linear-gradient(135deg, #8b0000, #a00000);
+    --accent-gradient: linear-gradient(90deg, #8b0000, #ff8c00);
+  }
+  
+  .card,
+  .compatibility-card {
+    border: 2px solid rgba(255, 255, 255, 0.8);
+  }
+  
+  .btn {
+    border: 2px solid currentColor;
+  }
+}
+
+/* 減少動畫偏好 */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+  
+  .circle {
+    animation: none;
+  }
+  
+  .heart-icon {
+    animation: none;
+  }
+  
+  .celebration {
+    animation: none;
+  }
+  
+  .type-icon {
+    animation: none;
+  }
+}
