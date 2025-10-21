@@ -1,6 +1,9 @@
 <template>
   <div class="matching-preview">
     <div class="preview-header">
+      <button @click="emit('back-to-result')" class="back-btn">
+        ← 返回測驗結果
+      </button>
       <h3>🔮 配對功能預覽</h3>
       <p>基於您的人格測驗結果，我們為您準備了以下功能</p>
     </div>
@@ -110,12 +113,7 @@
       <h4>🎉 搶先體驗</h4>
       <p>想要第一時間體驗配對功能嗎？留下您的聯絡方式，我們會優先通知您！</p>
       <div class="early-access-form">
-        <input 
-          v-model="email" 
-          type="email" 
-          placeholder="輸入您的 Email" 
-          class="email-input"
-        />
+        <input v-model="email" type="email" placeholder="輸入您的 Email" class="email-input" />
         <button @click="subscribeEarlyAccess" class="subscribe-btn">
           加入等候名單
         </button>
@@ -124,28 +122,29 @@
   </div>
 </template>
 
-<script>
-export default {
-  name: 'MatchingPreview',
-  data() {
-    return {
-      email: '',
-      mockMatches: [
-        { id: 1, name: '小雨', compatibilityScore: 92 },
-        { id: 2, name: '志明', compatibilityScore: 87 },
-        { id: 3, name: '婷婷', compatibilityScore: 83 },
-      ]
-    }
-  },
-  methods: {
-    subscribeEarlyAccess() {
-      if (this.email) {
-        alert(`謝謝您的關注！我們會寄送最新消息到 ${this.email}`)
-        this.email = ''
-      } else {
-        alert('請輸入有效的 Email 地址')
-      }
-    }
+<script setup lang="ts">
+import { ref } from 'vue'
+
+// Emit 定義
+const emit = defineEmits<{
+  'back-to-result': []
+}>()
+
+// 響應式數據
+const email = ref('')
+const mockMatches = ref([
+  { id: 1, name: '甜甜', compatibilityScore: 92 },
+  { id: 2, name: '甜妹', compatibilityScore: 87 },
+  { id: 3, name: '甜男', compatibilityScore: 83 },
+])
+
+// 方法
+const subscribeEarlyAccess = () => {
+  if (email.value) {
+    alert(`謝謝您的關注！我們會寄送最新消息到 ${email.value}`)
+    email.value = ''
+  } else {
+    alert('請輸入有效的 Email 地址')
   }
 }
 </script>
@@ -160,6 +159,26 @@ export default {
 .preview-header {
   text-align: center;
   margin-bottom: 2rem;
+  position: relative;
+}
+
+.back-btn {
+  position: absolute;
+  left: 0;
+  top: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 0.9rem;
+}
+
+.back-btn:hover {
+  background: rgba(255, 255, 255, 0.3);
+  transform: translateY(-1px);
 }
 
 .preview-header h3 {
@@ -359,8 +378,17 @@ export default {
 }
 
 @keyframes pulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  50% { transform: scale(1.1); opacity: 0.8; }
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.1);
+    opacity: 0.8;
+  }
 }
 
 .timeline-content h5 {
@@ -433,15 +461,15 @@ export default {
   .feature-cards {
     grid-template-columns: 1fr;
   }
-  
+
   .early-access-form {
     flex-direction: column;
   }
-  
+
   .roadmap-timeline {
     gap: 1rem;
   }
-  
+
   .timeline-item {
     gap: 0.8rem;
   }

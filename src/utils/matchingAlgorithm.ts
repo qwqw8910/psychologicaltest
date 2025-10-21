@@ -48,7 +48,7 @@ class MatchingAlgorithm {
     // 相容性矩陣 (簡化版本)
     const compatibilityMatrix = this.getCompatibilityMatrix(category)
     
-    return compatibilityMatrix[type1][type2]
+    return compatibilityMatrix[type1]?.[type2] || 0
   }
 
   // 獲取相容性矩陣
@@ -143,13 +143,23 @@ class MatchingAlgorithm {
   // 檢查類型是否相容
   private areTypesCompatible(types: number[], category: string): boolean {
     const matrix = this.getCompatibilityMatrix(category)
-    return matrix[types[0]][types[1]] >= 70
+    const type1 = types[0]
+    const type2 = types[1]
+    if (type1 !== undefined && type2 !== undefined) {
+      return (matrix[type1]?.[type2] || 0) >= 70
+    }
+    return false
   }
 
   // 檢查類型是否有衝突
   private hasTypeConflict(types: number[], category: string): boolean {
     const matrix = this.getCompatibilityMatrix(category)
-    return matrix[types[0]][types[1]] < 60
+    const type1 = types[0]
+    const type2 = types[1]
+    if (type1 !== undefined && type2 !== undefined) {
+      return (matrix[type1]?.[type2] || 0) < 60
+    }
+    return false
   }
 
   // 為用戶找到最佳配對 (模擬數據)

@@ -1,6 +1,66 @@
 /* 應用程序特定樣式 */
 
-/* 應用容器 */
+/* 主要應用容器 */
+#app {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif;
+}
+
+.app-background {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  position: relative;
+  overflow-x: hidden;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  position: relative;
+  z-index: 1;
+}
+
+.main-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  position: relative;
+  z-index: 2;
+}
+
+/* 裝飾元素 */
+.decoration-shape {
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.1);
+  animation: float 6s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.shape-1 {
+  width: 100px;
+  height: 100px;
+  top: 10%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.shape-2 {
+  width: 150px;
+  height: 150px;
+  top: 60%;
+  right: 10%;
+  animation-delay: 2s;
+}
+
+.shape-3 {
+  width: 80px;
+  height: 80px;
+  top: 20%;
+  left: 70%;
+  animation-delay: 4s;
+}
+
+/* 應用容器（舊版相容） */
 .app {
   min-height: 100vh;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -132,7 +192,7 @@
   margin-bottom: 3rem;
   box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
   width: 100%;
-  max-width: 400px;
+  max-width: 600px;
 }
 
 .input-group {
@@ -636,4 +696,350 @@
 .matching-page {
   width: 100%;
   max-width: 900px;
+}
+
+/* 詳細結果頁面樣式 */
+
+/* 總覽卡片 */
+.overview-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: var(--backdrop-filter);
+  text-align: center;
+  max-width: 800px;
+  width: 90%;
+}
+
+.overview-card h3 {
+  color: var(--primary-color);
+  margin-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.overall-type {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+  flex-wrap: wrap;
+}
+
+.main-badge {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  padding: 0.75rem 1.5rem;
+  border-radius: var(--border-radius-full);
+  font-weight: 600;
+  font-size: 1.1rem;
+}
+
+.sub-badge {
+  background: var(--surface-color);
+  color: var(--text-color);
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.9rem;
+  border: 1px solid var(--border-color);
+}
+
+.overview-desc {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
+
+/* 面向分析區域 */
+.dimensions-analysis {
+  max-width: 1000px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+/* 單個面向卡片 */
+.dimension-card {
+  background: var(--card-bg);
+  border-radius: var(--border-radius-lg);
+  padding: 2rem;
+  box-shadow: var(--shadow-lg);
+  backdrop-filter: var(--backdrop-filter);
+  border: 1px solid var(--border-color);
+}
+
+/* 面向標題區域 */
+.dimension-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.dimension-header h3 {
+  color: var(--primary-color);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+/* 信心等級標誌 */
+.confidence-badge {
+  padding: 0.5rem 1rem;
+  border-radius: var(--border-radius-full);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.confidence-badge.high {
+  background: linear-gradient(135deg, #10b981, #059669);
+  color: white;
+}
+
+.confidence-badge.medium {
+  background: linear-gradient(135deg, #f59e0b, #d97706);
+  color: white;
+}
+
+.confidence-badge.low {
+  background: linear-gradient(135deg, #8b5cf6, #7c3aed);
+  color: white;
+}
+
+/* 類型摘要 */
+.type-summary {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.main-style {
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+}
+
+.style-tag {
+  color: var(--text-secondary);
+  font-style: italic;
+  font-size: 1rem;
+}
+
+/* 分數概覽 */
+.score-overview {
+  margin-bottom: 2rem;
+}
+
+.score-bars {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.score-bar {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.style-name {
+  min-width: 120px;
+  font-size: 0.9rem;
+  color: var(--text-color);
+  text-align: right;
+}
+
+.bar-container {
+  flex: 1;
+  height: 24px;
+  background: var(--surface-color);
+  border-radius: var(--border-radius);
+  position: relative;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+  transition: width 0.8s ease;
+  border-radius: var(--border-radius);
+}
+
+.score-text {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+/* 詳細分析區塊 */
+.why-you-section,
+.daily-patterns,
+.pros-risks,
+.compatibility-hints,
+.micro-actions,
+.contrast-section {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.why-you-section:last-child,
+.daily-patterns:last-child,
+.pros-risks:last-child,
+.compatibility-hints:last-child,
+.micro-actions:last-child,
+.contrast-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+/* 標題樣式 */
+.dimension-card h4 {
+  color: var(--primary-color);
+  font-size: 1.1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.dimension-card h5 {
+  color: var(--text-color);
+  font-size: 1rem;
+  margin-bottom: 0.75rem;
+  font-weight: 600;
+}
+
+/* 列表樣式 */
+.choice-reasons,
+.pattern-list,
+.action-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.choice-reasons li,
+.pattern-list li {
+  background: var(--surface-color);
+  padding: 0.75rem;
+  margin-bottom: 0.5rem;
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--primary-color);
+}
+
+.action-list {
+  list-style: decimal;
+  padding-left: 1.5rem;
+}
+
+.action-list li {
+  padding: 0.5rem 0;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
+
+/* 優勢與風險 */
+.pros-risks {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.pros,
+.risks {
+  padding: 1rem;
+  border-radius: var(--border-radius);
+}
+
+.pros {
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 4px solid #10b981;
+}
+
+.risks {
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 4px solid #ef4444;
+}
+
+.pros h5 {
+  color: #059669;
+}
+
+.risks h5 {
+  color: #dc2626;
+}
+
+/* 相容性提示 */
+.compatibility-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin-bottom: 0.75rem;
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+}
+
+.compatibility-item.best {
+  background: rgba(16, 185, 129, 0.1);
+  border-left: 3px solid #10b981;
+}
+
+.compatibility-item.adjust {
+  background: rgba(245, 158, 11, 0.1);
+  border-left: 3px solid #f59e0b;
+}
+
+.compatibility-item.warning {
+  background: rgba(239, 68, 68, 0.1);
+  border-left: 3px solid #ef4444;
+}
+
+.compatibility-item .label {
+  font-weight: 600;
+  min-width: 80px;
+  color: var(--text-color);
+}
+
+/* 對照項目 */
+.contrast-items {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.contrast-item {
+  background: var(--surface-color);
+  padding: 0.75rem;
+  border-radius: var(--border-radius);
+  border-left: 3px solid var(--secondary-color);
+}
+
+/* 精準度說明 */
+.accuracy-note {
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: var(--border-radius);
+  padding: 1rem;
+  margin-top: 1rem;
+}
+
+.accuracy-note h5 {
+  color: #7c3aed;
+  margin-bottom: 0.5rem;
+}
+
+.accuracy-note p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0;
 }
