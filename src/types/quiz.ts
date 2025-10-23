@@ -54,3 +54,22 @@ export interface DetailedResult {
     description: string
   }
 }
+
+// 最終整合後的人格報告（12 類型之一）
+export interface FinalProfileCompatibility {
+  best: string
+  adjust: string
+  conflict: string
+}
+
+export interface FinalProfile {
+  typeName: string              // 例如：CV-穩定保守型 或 綜合型 (雙主型時可調整)
+  shortTag: string              // 簡短標籤（直白白話）
+  dailyPatterns: string[]       // 日常樣貌（3~5 條）
+  advantages: string[]          // 優勢列點
+  risks: string[]               // 缺點/風險列點
+  compatibility: FinalProfileCompatibility // 相容性提示
+  actions: string[]             // 行動建議（微行動）
+  otherSuggestions: string[]    // 其他建議/提醒
+}
+

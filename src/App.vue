@@ -5,18 +5,18 @@
         <div class="main-container">
           <!-- 首頁 -->
           <WelcomePage v-if="step === 0" />
-          
+
           <!-- 測驗頁面 -->
           <QuizPage v-if="step === 1" />
-          
+
           <!-- 結果頁面 -->
           <ResultPage v-if="step === 2" />
-          
+
           <!-- 配對預覽頁面 -->
           <MatchingPreview v-if="step === 3" @back-to-result="handleBackToResult" />
         </div>
       </div>
-      
+
       <!-- 裝飾元素 -->
       <div class="decoration-shape shape-1"></div>
       <div class="decoration-shape shape-2"></div>
